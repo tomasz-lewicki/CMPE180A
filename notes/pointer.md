@@ -95,3 +95,13 @@ Pointers can be compared and assigned __witin compatible types__
 _memory leak_ - allocated memory we have no reference to. There's __unreachable__ memory
 
 _dangling pointer_ - pointer pointing to an invalid memory location.
+
+## 7. Return value of & operator
+
+The return value of the & operator is pointer to a type. _(somehow I didn't realize that)_.
+ 
+```C++
+[cling]$ int i =5;
+[cling]$ &i
+(int *) 0x7fb97f7d1010
+```
