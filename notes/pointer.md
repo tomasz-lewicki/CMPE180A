@@ -105,3 +105,20 @@ The return value of the & operator is pointer to a type. _(somehow I didn't real
 [cling]$ &i
 (int *) 0x7fb97f7d1010
 ```
+## 8. Modify a pointer inside a function
+
+The general rule is that you pass a pointer to the thing you want to modify.
+
+In this example you want to modify the value of ```(Portfolio*) fistHalf```
+
+You can do so by either:
+
+passing the pointer by reference
+```C++
+void Portfolio::splitInHalf(Portfolio*& firstHalf, Portfolio*& secondHalf)
+```
+
+passing a pointer to the pointer
+```C++
+void Portfolio::splitInHalf(Portfolio** firstHalf, Portfolio** secondHalf)
+```
