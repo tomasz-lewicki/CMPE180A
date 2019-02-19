@@ -10,7 +10,7 @@ Portfolio::Portfolio(Stock firstStock, int shares)
     head = new ListNode;
     head->s = firstStock;
     head->shares = shares;
-    head->next = nullptr;
+    this->head->next = NULL;
 
     length = 1;
 }
@@ -28,19 +28,31 @@ Portfolio::~Portfolio()
 
 void Portfolio::printAll()
 {
-    ListNode* last = head;
+    ListNode* it = head;
 
-    while(last != nullptr)
+    while(it != nullptr)
     {
-        cout << last->shares << " shares of " << last->s << endl;
-        last = last->next;
+        cout << it->shares << " shares of " << it->s << endl;
+        it = it->next;
     }
 }
 
-void Portfolio::add(ListNode& tail, Stock s, int shares)
+void Portfolio::add(Stock s, int shares)
 {
-    tail.next = new ListNode;
-    tail.shares = shares;
+    //get to the end
+    ListNode* it = head;
+
+    //this step results in complexity O(n) in number of nodes.
+    //it could be easily avoided but keeping track of the tail of the list
+    while(it->next != nullptr) it=it->next;
+
+    it->next = new ListNode;
+    it = it->next;
+    it->s = s;
+    it->shares = shares;
+    it->next = nullptr;
+    ++length;
+
 }
 
 size_t Portfolio::middleList(Stock* middle)
@@ -56,6 +68,11 @@ size_t Portfolio::middleList(Stock* middle)
     *middle = it->s;
 
     return idx;
+}
+
+size_t Portfolio::getSize()
+{
+    return length;
 }
 
 void Portfolio::LoadFromCSV(string filename)
@@ -90,3 +107,27 @@ void Portfolio::LoadFromCSV(string filename)
 
     myfile.close();
 }
+
+
+void Portfolio::splitInHalf(Portfolio*& firstHalf, Portfolio*& secondHalf)
+{
+    //this is not ideal as it allocates & frees memory on different level of abstraction
+    firstHalf = new Portfolio(head->s, head->shares);
+
+    ListNode* it = head->next;
+
+    for(int i=0; i < length/2; ++i)
+    {
+        firstHalf->add(it->s, it->shares);
+        it=it->next;
+    }
+
+    secondHalf = new Portfolio(it->s, it->shares);
+
+    while(it != nullptr)
+    {
+        secondHalf->add(it->s, it->shares);
+        it=it->next;
+    }
+}
+

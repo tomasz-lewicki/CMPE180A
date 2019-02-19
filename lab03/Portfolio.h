@@ -21,10 +21,12 @@ class Portfolio
         Portfolio(Stock firstStock, int shares);
         ~Portfolio();
 
+        size_t getSize();
         void printAll();
-        void add(ListNode& tail, Stock s, int shares);
+        void add(Stock s, int shares);
         size_t middleList(Stock* middle);
         void LoadFromCSV(std::string filename);
+        void splitInHalf(Portfolio*& firstHalf, Portfolio*& secondHalf);
 };
 
 #endif
