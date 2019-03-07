@@ -11,6 +11,7 @@ class Complex
         Complex(double re=0, double im=0);
         Complex operator+(const Complex& otherNumber);
         bool operator<(const Complex& otherNumber);
+        bool operator>(const Complex& otherNumber);
         bool operator==(const Complex& otherNumber);
 
     private:

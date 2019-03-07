@@ -32,6 +32,12 @@ bool Complex::operator<(const Complex& otherNumber)
     else return false;
 }
 
+bool Complex::operator>(const Complex& otherNumber)
+{
+    if(sqrt(pow(re,2)+pow(im,2)) > sqrt(pow(otherNumber.re,2) + pow(otherNumber.im,2))) return true;
+    else return false;
+}
+
 bool Complex::operator==(const Complex& otherNumber)
 {
     if(re == otherNumber.re && im == otherNumber.im) return true;
