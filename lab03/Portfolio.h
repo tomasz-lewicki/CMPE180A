@@ -14,7 +14,7 @@ class ListNode
 
 class Portfolio
 {
-    private:
+    protected:
         ListNode* head;
         size_t length;
     public:
