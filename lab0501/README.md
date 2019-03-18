@@ -3,7 +3,7 @@ Practice recursive functions in both array and linked list
 
 # Overview
 
-1. Go back to complex number in Lab 2 where you store more than 15 complex numbers in an array. 
+1. Go back to complex number in Lab 2 where you store more than 15 complex numbers in an array.
 2. Find the largest complex number in the array using recursive method.  The largest number is the one who has the largest (real)*(real) + (img)*(img)
 3. Go back to forward link list in Lab 3 where you store many stocks in a link list.
 4. Write the reverse print function using recursive method.
