@@ -16,7 +16,7 @@
 - [x] Write the function "returnMiddleList" to find the middle element of the linked list in one pass.
     + [x] Print the element and the position of this element (starting at zero) in relation to the head (where the head = 0, the element pointed to by the head = 1, the element pointed to by the previous one = 2, etc).
     
-- [ ] Split the list in half at the middle element to create two entirely separate* linked lists of near equal size (+/- 1) and print the two lists.  In other words, write the "split in half" function.
+- [x] Split the list in half at the middle element to create two entirely separate* linked lists of near equal size (+/- 1) and print the two lists.  In other words, write the "split in half" function.
 
 ## Discussions
 1. Can you try both is-a and has-a implementation for node?  What do you like or don't like?
