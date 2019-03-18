@@ -122,3 +122,7 @@ passing a pointer to the pointer
 ```C++
 void Portfolio::splitInHalf(Portfolio** firstHalf, Portfolio** secondHalf)
 ```
+
+## 9. dealocating memory
+delete p - frees the memory allocated at the address of p
+delete[] arr - frees the allocated memory and calls destructors of all the objects in arr
