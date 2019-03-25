@@ -11,6 +11,7 @@ class Stack
         ~Stack();
         void pop();
         void push(T item);
+        bool empty();
         T top();
 
     private:
@@ -19,6 +20,5 @@ class Stack
         T* arr;
     
 };
-
 
 #endif
