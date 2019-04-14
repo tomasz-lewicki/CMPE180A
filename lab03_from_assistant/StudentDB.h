@@ -40,4 +40,5 @@ class StudentDB
 
     private:
     Node* head;
+    size_t size;
 };
