@@ -1,3 +1,9 @@
+# To run submission simply do:
+```
+make all
+```
+
+# Task:
 Rewrite your forward linked list to doubly linked list.
 
 hints:
@@ -11,5 +17,5 @@ implement:
 - [x] insert at middle,
 - [x] insert at back,
 - [x] insert at front,
-- [] delete at back,
-- [] delete at middle. 
+- [x] delete at back,
+- [x] delete at middle. 

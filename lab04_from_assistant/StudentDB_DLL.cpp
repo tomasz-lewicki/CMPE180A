@@ -10,7 +10,7 @@ Student::Student(std::string name, unsigned int id)
 
 std::ostream& operator<<(std::ostream& os, const Student& s)
 {
-    os << s.id;
+    os << s.name << ", id: " << s.id;
     return os;
 }
 
@@ -19,6 +19,16 @@ StudentDB::StudentDB()
     head = nullptr;
     tail = nullptr;
     size = 0;
+}
+
+StudentDB::~StudentDB()
+{
+    while(head != nullptr)
+    {
+        Node* tmp = head;
+        head=head->next;
+        delete tmp;
+    }
 }
 
 void StudentDB::insertBack(Student s)
@@ -65,23 +75,28 @@ void StudentDB::insertFront(Student s)
 
         head->prev = newNode;
         head = newNode;
-
+        ++size;
     }
-    ++size;
+}
+
+Node* StudentDB::getMiddle()
+{
+    size_t size_it = 1;
+    size_t halfSize = (size-1)/2;
+    Node* it = head;
+    while(size_it <= halfSize)
+    {
+        it=it->next;
+        ++size_it;
+    }
+    return it;
 }
 
 void StudentDB::insertMiddle(Student s)
 {
     if(head == nullptr || tail == nullptr) insertFront(s);
 
-    size_t size_it = 1;
-    size_t halfSize = size/2;
-    Node* it = head;
-    while(size_it != halfSize)
-    {
-        it=it->next;
-        ++size_it;
-    }
+    Node* it = getMiddle();
 
     Node* newNode = new Node;
     newNode->s = s;
@@ -96,15 +111,45 @@ void StudentDB::insertMiddle(Student s)
 
 void StudentDB::deleteFront()
 {
-    
+    if(head==nullptr) throw "Cannot delete from empty list";
+    else if(tail == nullptr) //delete from one-element list
+    {
+        delete tail;
+        --size;
+        head = tail = nullptr;
+    }
+    else
+    {
+        Node* tmp = head;
+        head = head->next;
+        delete tmp;
+        --size;
+    }
 }
 void StudentDB::deleteMiddle()
 {
-    
+    //deleting for empty or one-element list boils down to deleteFront
+    if(head==nullptr || tail == nullptr || size==2) deleteFront();
+    else
+    {
+        Node* mid = getMiddle();
+        mid->prev->next = mid->next;
+        mid->next->prev = mid->prev;
+        delete mid;
+        --size;
+    }
 }
 void StudentDB::deleteBack()
 {
-
+    //deleting for empty or one-element list boils down to deleteFront
+    if(head==nullptr or tail == nullptr) deleteFront();
+    else
+    {
+        Node* tmp = tail;
+        tail->prev->next = nullptr;
+        delete tmp;
+        --size;
+    }
 }
 void StudentDB::print() const
 {
@@ -112,6 +157,6 @@ void StudentDB::print() const
     while(it != nullptr)
     {
         std::cout << it->s << std::endl;
-        it = it->next; 
+        it = it->next;
     }
 }

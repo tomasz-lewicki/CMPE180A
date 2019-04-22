@@ -29,6 +29,7 @@ class StudentDB
 {
     public:
     StudentDB();
+    ~StudentDB();
     void insertFront(Student s);
     void insertBack(Student s);
     void insertMiddle(Student s);
@@ -43,4 +44,5 @@ class StudentDB
     Node* head;
     Node* tail;
     size_t size;
+    Node* getMiddle();
 };
