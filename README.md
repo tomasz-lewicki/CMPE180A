@@ -1,3 +1,6 @@
 # CMPE 180A class assignemts & notes
 
-Please let me know if this format is acceptable.
+Notes from Spring '19 CMPE180A class with Frank Lin at SJSU.
+
+Lab content is avilable at:
+https://sites.google.com/site/sjsucmpe126/
